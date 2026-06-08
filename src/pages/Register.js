@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';
+import getBaseUrl from '../utils/getBaseUrl';
 
 const steps = ['Personal Info', 'Membership', 'Your Goal'];
 
@@ -36,7 +37,7 @@ function Register() {
     setLoading(true);
     setStatus({ type: '', message: '' });
     try {
-      const res = await fetch('/api/members/register', {
+      const res = await fetch(`${getBaseUrl()}/api/members/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...formData, age: Number(formData.age) }),

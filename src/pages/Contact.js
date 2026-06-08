@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
+import getBaseUrl from '../utils/getBaseUrl';
 
 const faqs = [
   { q: 'What are your working hours?', a: 'Mon–Sat: 5:00 AM to 10:00 PM. Sundays: 7:00 AM to 8:00 PM.' },
@@ -34,7 +35,7 @@ function Contact() {
     setLoading(true);
     setStatus({ type: '', message: '' });
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(`${getBaseUrl()}/api/contact`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
